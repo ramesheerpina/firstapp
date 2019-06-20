@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View, StyleSheet } from 'react-native';
+import { AppRegistry, Text, View, StyleSheet, Image } from 'react-native';
 
 
 class Greeting extends Component {
@@ -17,7 +17,9 @@ export default class LotsOfGreetings extends Component {
       <View style = {styles.container}>
         <Greeting name = 'Raxxesh' />
         <Greeting name = 'Jaina' />
-        <Greeting name = 'Valeera' />
+        <Greeting name = 'Banana' />
+        <Image style={{width: 300, height: 160}}
+          source = {{uri: "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg" }}/>
       </View>
     );
   }
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    top: 300
+    top: 100
   }
 }
 ) 
