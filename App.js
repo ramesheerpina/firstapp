@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, Text, View, StyleSheet, Image } from 'react-native';
 
 
+/*
 class Greeting extends Component {
   render () {
     return (
@@ -11,13 +12,38 @@ class Greeting extends Component {
     );
   }
 }
+*/
 export default class LotsOfGreetings extends Component {
+  
+  constructor () {
+    super()
+    this.state= {}
+    this.state.customStyles = {
+      color: 'red'
+    }
+    setInterval(() => {
+      if(this.state.customStyles.color == 'red') {
+        this.setState({
+          customStyles: {
+            color:'green'
+          }
+        })
+      } else {
+        this.setState({
+          customStyles: {
+            color:'red'
+          }
+        })
+      }
+    }, 1000)
+  }
+
   render () {
     return (
       <View style = {styles.container}>
-        <Greeting name = 'Raxxesh' />
-        <Greeting name = 'Jaina' />
-        <Greeting name = 'Banana' />
+        <Text style = {this.state.customStyles}>
+          'Hello Bananas'
+        </Text>
         <Image style={{width: 300, height: 160}}
           source = {{uri: "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg" }}/>
       </View>
