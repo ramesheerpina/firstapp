@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View, StyleSheet, Image, TextInput } from 'react-native';
-
+import { AppRegistry, Text, View, StyleSheet, Image, TextInput, Button } from 'react-native';
 
 /*
 class Greeting extends Component {
@@ -18,8 +17,6 @@ export default class LotsOfGreetings extends Component {
   constructor () {
     super()
     this.state= {
-      username: "enter here",
-      password: "****"
     }
     
     this.state.customStyles = {
@@ -44,12 +41,9 @@ export default class LotsOfGreetings extends Component {
     }, 1000)
   }
 
-handleUsernameChanges(newText) {
-  console.log('Username is ${newText}')
-}
-handlePasswordChanges(newText) {
-  console.log('Password is ${newText}')
-}
+  buttonPressed() {
+    console.log(this.state.username, this.state.password)
+  }
 
   render () {
     return (
@@ -63,19 +57,22 @@ handlePasswordChanges(newText) {
         </View>
 
         <View style = {styles.half2}>
+
           <View style = {[styles.half21, styles.half2x]}>
             <Text style = {styles.text}>'This is 2-1'</Text>
           </View>
+
           <View style = {[styles.half22, styles.half2x]}>
             <Text>username</Text>
             <TextInput 
-              //default value = {this.state.username}
-              onChangeText = {this.handleUsernameChanges}/>
+              default value = {this.state.username}
+              onChangeText = {text => this.setState({username: text})}/>
 
             <Text>password</Text>
             <TextInput 
-              //default value = {this.state.password}
-              onChangeText = {this.handlePasswordChanges}/>
+              default value = {this.state.password}
+              onChangeText = {text => this.setState({password: text})}/> 
+            <Button title = {"Click Here"} onPress = {this.buttonPressed}/>
           </View>
         </View>
       </View>
@@ -90,9 +87,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'red',
     alignItems: 'center'
-  },
+  }, 
   half2 : {
-    flex : 1,
+    flex : 3,
     backgroundColor: "blue",
     flexDirection: 'row'
   },
