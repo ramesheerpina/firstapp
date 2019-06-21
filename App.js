@@ -55,7 +55,8 @@ export default class LotsOfGreetings extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    flexDirection: 'row'
   },
   half1: {
     flex: 1,
