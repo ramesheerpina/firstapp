@@ -25,7 +25,8 @@ export default class LotsOfGreetings extends Component {
       if(this.state.customStyles.color == 'red') {
         this.setState({
           customStyles: {
-            color:'green'
+            color:'green',
+            fontSize : 30
           }
         })
       } else {
@@ -48,15 +49,22 @@ export default class LotsOfGreetings extends Component {
           <Image style={{width: 300, height: 160}}
             source = {{uri: "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg" }}/>
         </View>
-        <View style = {styles.half2}></View>
+
+        <View style = {styles.half2}>
+          <View style = {styles.half21}>
+            <Text style = {styles.text}>'This is 2-1'</Text>
+          </View>
+          <View style = {styles.half22}>
+          <Text style = {styles.text}>'This is 2-2'</Text>
+          </View>
+        </View>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row'
+    flex: 1
   },
   half1: {
     flex: 1,
@@ -65,6 +73,23 @@ const styles = StyleSheet.create({
   },
   half2 : {
     flex : 1,
-    backgroundColor: "blue"
+    backgroundColor: "blue",
+    flexDirection: 'row'
+  },
+  half21 : {
+    flex: 2,
+    backgroundColor: 'orange',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  half22 : {
+    flex: 1,
+    backgroundColor: 'green',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text: {
+    color : 'white',
+    fontSize: 20
   }
 }) 
