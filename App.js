@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View, StyleSheet, Image } from 'react-native';
+import { AppRegistry, Text, View, StyleSheet, Image, TextInput } from 'react-native';
 
 
 /*
@@ -17,10 +17,15 @@ export default class LotsOfGreetings extends Component {
   
   constructor () {
     super()
-    this.state= {}
+    this.state= {
+      username: "enter here",
+      password: "****"
+    }
+    
     this.state.customStyles = {
       color: 'red'
     }
+    
     setInterval(() => {
       if(this.state.customStyles.color == 'red') {
         this.setState({
@@ -39,6 +44,13 @@ export default class LotsOfGreetings extends Component {
     }, 1000)
   }
 
+handleUsernameChanges(newText) {
+  console.log('Username is ${newText}')
+}
+handlePasswordChanges(newText) {
+  console.log('Password is ${newText}')
+}
+
   render () {
     return (
       <View style = {styles.container}>
@@ -55,7 +67,15 @@ export default class LotsOfGreetings extends Component {
             <Text style = {styles.text}>'This is 2-1'</Text>
           </View>
           <View style = {[styles.half22, styles.half2x]}>
-          <Text style = {styles.text}>'This is 2-2'</Text>
+            <Text>username</Text>
+            <TextInput 
+              //default value = {this.state.username}
+              onChangeText = {this.handleUsernameChanges}/>
+
+            <Text>password</Text>
+            <TextInput 
+              //default value = {this.state.password}
+              onChangeText = {this.handlePasswordChanges}/>
           </View>
         </View>
       </View>
@@ -81,11 +101,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   half21 : {
-    flex: 2,
+    flex: 1,
     backgroundColor: 'orange'
   },
   half22 : {
-    flex: 1,
+    flex: 2,
     backgroundColor: 'green'
   },
   text: {
