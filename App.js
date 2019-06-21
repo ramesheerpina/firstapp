@@ -25,7 +25,7 @@ export default class LotsOfGreetings extends Component {
       if(this.state.customStyles.color == 'red') {
         this.setState({
           customStyles: {
-            color:'green',
+            color:'white',
             fontSize : 30
           }
         })
@@ -51,10 +51,10 @@ export default class LotsOfGreetings extends Component {
         </View>
 
         <View style = {styles.half2}>
-          <View style = {styles.half21}>
+          <View style = {[styles.half21, styles.half2x]}>
             <Text style = {styles.text}>'This is 2-1'</Text>
           </View>
-          <View style = {styles.half22}>
+          <View style = {[styles.half22, styles.half2x]}>
           <Text style = {styles.text}>'This is 2-2'</Text>
           </View>
         </View>
@@ -76,17 +76,17 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
     flexDirection: 'row'
   },
-  half21 : {
-    flex: 2,
-    backgroundColor: 'orange',
+  half2x: {
     justifyContent: 'center',
     alignItems: 'center'
   },
+  half21 : {
+    flex: 2,
+    backgroundColor: 'orange'
+  },
   half22 : {
     flex: 1,
-    backgroundColor: 'green',
-    justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: 'green'
   },
   text: {
     color : 'white',
