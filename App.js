@@ -73,7 +73,7 @@ export default class App extends Component {
     for (let i = 0; i < 4; i++) {
       let row = []
       for (let j =0; j < 3; j++) {
-        row.push(<TouchableOpacity onPress = {() => this.buttonPressed(nums[i][j])} style = {styles.btn}>
+        row.push(<TouchableOpacity key = {nums[i][j]} onPress = {() => this.buttonPressed(nums[i][j])} style = {styles.btn}>
           <Text style = {styles.btntxt}>{nums[i][j]}</Text>
         </TouchableOpacity>)
       }
@@ -83,7 +83,7 @@ export default class App extends Component {
     
     let ops =[]
     for (let j =0; j < 5; j++) {
-      ops.push(<TouchableOpacity style = {styles.btn} onPress = {() => this.operate(this.operations[j])}>
+      ops.push(<TouchableOpacity key = {this.operations[j]} style = {styles.btn} onPress = {() => this.operate(this.operations[j])}>
         <Text style = {[styles.btntxt, styles.white]}>{this.operations[j]}</Text>
       </TouchableOpacity>)
     }
@@ -118,7 +118,7 @@ const styles = StyleSheet.create ({
   },
   calculationText : {
     fontSize : 30,
-    color: 'white'
+    color: 'black'
   },
   row : {
     flexDirection: 'row',
@@ -128,11 +128,12 @@ const styles = StyleSheet.create ({
   },
   result : {
     flexGrow : 2, 
-    backgroundColor: 'red',
+    backgroundColor: 'orange',
     justifyContent:'center',
     alignItems : 'flex-end'
   },
   btntxt : {
+    color: 'white',
     fontSize : 30
   },
   btn : {
@@ -143,7 +144,7 @@ const styles = StyleSheet.create ({
   },
   calculation : {
     flexGrow : 1, 
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     justifyContent:'center',
     alignItems : 'flex-end'
   },
@@ -153,15 +154,17 @@ const styles = StyleSheet.create ({
   buttons : { 
     flexGrow: 7,
     flexDirection: 'row'
+    
   },
   numbers : {
     flex: 3,
-    backgroundColor: 'yellow'
+    backgroundColor: '#434344',
+
   },
   operations : {
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'stretch',
-    backgroundColor: 'black'
+    backgroundColor: '#636363'
   }
 })
