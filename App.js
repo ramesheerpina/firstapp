@@ -4,7 +4,32 @@ import {Text, View, StyleSheet, Button, TouchableOpacity} from 'react-native';
 export default class App extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      resultText:""
+    }
+  }
+  calculateResult () {
+    const text = this.state.resultText
+  }
+  buttonPressed(text) {
+    console.log(text)
+    if(text== '=') {
+      return this.calculateResult(this.state.result)
+    }
+    this.setState({
+      resultText: this.state.resultText+text
+    })
+  }
+
+  operate(operations) {
+    switch(operations) {
+      case 'Del':
+        const text = this.state.resultText.split('')
+        text.pop()
+        this.setState({
+          resultText: text.join('')
+        })
+    }
   }
   render () {
     let rows = []
@@ -12,23 +37,25 @@ export default class App extends Component {
     for (let i = 0; i < 4; i++) {
       let row = []
       for (let j =0; j < 3; j++) {
-        row.push(<TouchableOpacity style = {styles.btn}>
+        row.push(<TouchableOpacity onPress = {() => this.buttonPressed(nums[i][j])} style = {styles.btn}>
           <Text style = {styles.btntxt}>{nums[i][j]}</Text>
         </TouchableOpacity>)
       }
       rows.push(<View style = {styles.row}>{row}</View>)
     }
 
-    let operations = ['+','-','*','/']
+    let operations = ['Del','+','-','*','/']
     let ops =[]
-    for (let j =0; j < 4; j++) {
-      ops.push(<TouchableOpacity style = {styles.btn}>
+    for (let j =0; j < 5; j++) {
+      ops.push(<TouchableOpacity style = {styles.btn} onPress = {() => this.operate(operations[j])}>
         <Text style = {[styles.btntxt, styles.white]}>{operations[j]}</Text>
       </TouchableOpacity>)
     }
     return (
       <View style={styles.container}>
-        <View style = {styles.result}></View>
+        <View style = {styles.result}>
+          <Text> style = {styles.resultText}>{this.state.resultText}</Text>
+        </View>
         <View style = {styles.calculation}></View>
         <View style = {styles.buttons}>
           <View style = {styles.numbers}>
